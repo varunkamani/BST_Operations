@@ -143,7 +143,7 @@ node* Delete(struct node *tree,int data)
 		if(tree->right==NULL && tree->left == NULL)
 		{
 			delete tree;
-			tree==NULL;
+			tree=NULL;
 		}
 		else if(tree->right==NULL)
 		{
