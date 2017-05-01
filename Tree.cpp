@@ -12,6 +12,7 @@ void Inorder(struct node *tree);
 void preorder(struct node *tree);
 void Postorder(struct node *tree);
 node* FindMin(struct node *tree);
+node* FindMax(node *tree);
 main()
 {
 
@@ -23,7 +24,9 @@ main()
 	cout<<"3.Inorder\n";
 	cout<<"4.Preorder\n";
 	cout<<"5.Postorder\n";
-	cout<<"6.Exit\n";
+	cout<<"6.Find Minimum element\n";
+	cout<<"7.Find Maximum element\n";
+	cout<<"8.Exit\n";
 	cout<<"Enter your choice :\n";
 	cin>>choice;
 	switch(choice)
@@ -52,14 +55,35 @@ main()
 			Postorder(root);
 			break;
 		case 6:
+			{
+			//When we declare new variable in swutch case it must be placed in block
+			node* newnode = FindMin(root);;
+			cout<<"Minimum element in tree is "<<newnode->data<<"\n";
+			}
+			break;
+		case 7:
+			{
+			node* newnode = FindMax(root);
+			cout<<"Maximum element in tree is "<<newnode->data<<"\n";
+			}	
+			break;	
+		case 8:
 			option=0;	
 			break;
-		default:
+	        default:
 			cout<<"Wrong choice\n";
 			break;
 	}
 	}
 	return 0;
+}
+node* FindMax(node* tree)
+{
+	while(tree->right!=NULL)
+	{
+		tree=tree->right;
+	}
+	return tree;
 }
 node* Insert(struct node *tree,int data)
 {
